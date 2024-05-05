@@ -1,28 +1,29 @@
+import java.util.ArrayList;
+import company.abstracts.Employee;
 import company.models.Manager;
 import company.models.Worker;
 
 public class Main {
     public static void main(String[] args) {
-        Worker worker1 = new Worker("Janek", 2500.00, 1);
-        Worker worker2 = new Worker("Ania", 3000.00, 2);
-        Worker worker3 = new Worker("Piotrek", 2200.00, 3);
-        Worker worker4 = new Worker("Marta", 2800.00, 4);
+        Worker worker1 = new Worker("Janek", 2500.00, 1, "2020-25-05", "Senior Developer");
+        Worker worker2 = new Worker("Ania", 3000.00, 2, "2023-23-02", "Junior Developer");
+        Worker worker3 = new Worker("Piotrek", 2200.00, 3, "2016-11-11", "Senior Developer");
+        Worker worker4 = new Worker("Marta", 2800.00, 4, "2022-10-30", "Project Manager");
 
-        Manager manager = new Manager("Krzysztof", 5000.00, 5);
+        Manager manager = new Manager("Krzysztof", 5000.00, 5, "2015-01-01", "Head");
 
-        System.out.println("Pracownik: " + worker1.getName() + ", pensja: " + worker1.getSalary());
-        worker1.work();
+        ArrayList<Employee> employees = new ArrayList<>();
+        employees.add(worker1);
+        employees.add(worker2);
+        employees.add(worker3);
+        employees.add(worker4);
+        employees.add(manager);
 
-        System.out.println("Pracownik: " + worker2.getName() + ", pensja: " + worker2.getSalary());
-        worker2.work();
-
-        System.out.println("Pracownik: " + worker3.getName() + ", pensja: " + worker3.getSalary());
-        worker3.work();
-
-        System.out.println("Pracownik: " + worker4.getName() + ", pensja: " + worker4.getSalary());
-        worker4.work();
-
-        System.out.println("\nKierownik: " + manager.getName() + ", pensja: " + manager.getSalary());
-        manager.work();
+        for (Employee employee : employees) {
+            System.out.println("- " + employee.getName() + " (ID: " + employee.getId() + ", " +
+                    "Position: " + employee.getPosition() + ", Hire date: " + employee.getHireDate() + ", Salary: "
+                    + employee.getSalary() + ")");
+            employee.work();
+        }
     }
 }
